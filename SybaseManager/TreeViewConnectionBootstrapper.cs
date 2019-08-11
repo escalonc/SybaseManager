@@ -56,7 +56,7 @@ namespace SybaseManager
                     {
                         constraintsNode.Nodes.Add(new TreeNode
                         {
-                            Name = constraint.Name,
+                            Text = constraint.Name,
                             Tag = "Constraint"
                         });
                     }

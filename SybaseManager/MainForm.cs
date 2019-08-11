@@ -22,37 +22,8 @@ namespace SybaseManager
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            connectionsTreeView.Nodes.Add("Connections");
             dataGridView1.AutoGenerateColumns = false;
-
-            var treeViewConnectionBootstrapper = new TreeViewConnectionBootstrapper();
-
-            try
-            {
-                var connection = new SybaseConnectionFactory().Create(new ConnectionConfiguration
-                {
-                    DatabaseName = "theorydb",
-                    HostName = "CHRIS-LAPTOP",
-                    Password = "admin123",
-                    UserName = "sa"
-                });
-
-                connection.Open();
-
-                CurrentInformation.ConnectionProperties = new ConnectionInformation
-                {
-                    Connection = connection
-                };
-
-                TreeViewConnectionBootstrapper.Init(CurrentInformation.ConnectionProperties, connectionsTreeView);
-
-                connectionsTreeView.ExpandAll();
-
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Error when trying to create the connection");
-            }
+            connectionsTreeView.Nodes.Add("Connections");
         }
 
         private void ConnectionsTreeView_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -60,10 +31,12 @@ namespace SybaseManager
             var selectedNode = connectionsTreeView.SelectedNode;
 
             if (selectedNode.Tag == null || !selectedNode.Tag.Equals("Table")) return;
-            
+
             dataGridView1.Columns.Clear();
-            var data = CurrentInformation.ConnectionProperties.Connection.Query<object>($"select * from {selectedNode.Text}");
-            var columns = CurrentInformation.ConnectionProperties.Connection.Query<string>($@"SELECT syscolumns.name FROM sysobjects 
+            var data =
+                CurrentInformation.ConnectionProperties.Connection.Query<object>($"select * from {selectedNode.Text}");
+            var columns = CurrentInformation.ConnectionProperties.Connection.Query<string>(
+                $@"SELECT syscolumns.name FROM sysobjects 
                                                                                                 JOIN syscolumns ON sysobjects.id = syscolumns.id
                                                                                                 WHERE sysobjects.name LIKE '{selectedNode.Text}'");
 
@@ -214,33 +187,49 @@ namespace SybaseManager
                         DROP TABLE #rtn
                         DROP TABLE #indexes
                         ";
-            
-           
-            
+
+
             var ddl = "";
-            
+
             if (CurrentInformation.ObjectType.Equals("Table"))
             {
-                ddl = string.Join(Environment.NewLine, CurrentInformation.ConnectionProperties.Connection.Query<string>(sqlGenTable));
+                ddl = string.Join(Environment.NewLine,
+                    CurrentInformation.ConnectionProperties.Connection.Query<string>(sqlGenTable));
             }
-//            else if (CurrentInformation.ObjectType.Equals("Constraint"))
-//            {
-//                ddl = CurrentInformation.ConnectionProperties.Connection.Query<ConstraintModel>($@"
-//                    select object_name(tableid) as TableName, 
-//                    object_name(constrid) as Name,
-//                    col_name(tableid,sysconstraints.colid) as ColumnName,
-//                    text as Source
-//                    from sysconstraints,syscomments
-//                    where sysconstraints.status=128 and sysconstraints.constrid=syscomments.id and object_name(constrid) = 'SalesOrder_1360004845'
-//                ").First().Source;
-//            }
+            else if (CurrentInformation.ObjectType.Equals("Constraint"))
+            {
+                ddl = CurrentInformation.ConnectionProperties.Connection.Query<ConstraintModel>($@"
+                    select object_name(tableid) as TableName, 
+                    object_name(constrid) as Name,
+                    col_name(tableid,sysconstraints.colid) as ColumnName,
+                    text as Source
+                    from sysconstraints,syscomments
+                    where sysconstraints.status=128 and sysconstraints.constrid=syscomments.id and object_name(constrid) = 'SalesOrder_1360004845'
+                ").First().Source;
+            }
             else
             {
-                ddl = CurrentInformation.ConnectionProperties.Connection.Query<string>(CurrentInformation.sqlGenObject()).FirstOrDefault();
+                ddl = CurrentInformation.ConnectionProperties.Connection
+                    .Query<string>(CurrentInformation.sqlGenObject()).FirstOrDefault();
             }
-          
+
             var editForm = new EditForm(string.Join(Environment.NewLine, ddl));
             editForm.Show();
+        }
+
+        private void NewConnectionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var connectionForm = new ConnectionForm();
+            connectionForm.ShowDialog();
+
+            if (connectionForm.DialogResult != DialogResult.OK)
+            {
+                return;
+            }
+            
+            TreeViewConnectionBootstrapper.Init(CurrentInformation.ConnectionProperties, connectionsTreeView);
+
+            connectionsTreeView.ExpandAll();
         }
     }
 }
