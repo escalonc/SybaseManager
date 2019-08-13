@@ -60,7 +60,7 @@ namespace SybaseManager
             var node = connectionsTreeView.GetNodeAt(e.X, e.Y);
             connectionsTreeView.SelectedNode = node;
 
-            if (node == null) return;
+            if (node == null || node.Tag == null) return;
 
             CurrentInformation.ObjectType = node.Tag.ToString();
             CurrentInformation.ObjectName = node.Text;
@@ -189,8 +189,7 @@ namespace SybaseManager
                         ";
 
 
-            var ddl = "";
-
+            string ddl;
             if (CurrentInformation.ObjectType.Equals("Table"))
             {
                 ddl = string.Join(Environment.NewLine,
@@ -210,7 +209,7 @@ namespace SybaseManager
             else
             {
                 ddl = CurrentInformation.ConnectionProperties.Connection
-                    .Query<string>(CurrentInformation.sqlGenObject()).FirstOrDefault();
+                    .Query<string>(CurrentInformation.SqlGenObject()).FirstOrDefault();
             }
 
             var editForm = new EditForm(string.Join(Environment.NewLine, ddl));
@@ -229,7 +228,20 @@ namespace SybaseManager
             
             TreeViewConnectionBootstrapper.Init(CurrentInformation.ConnectionProperties, connectionsTreeView);
 
-            connectionsTreeView.ExpandAll();
+            connectionsTreeView.Nodes[0].Expand();
+        }
+
+        private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (CurrentInformation.ObjectType.Equals("Connection"))
+            {
+                CurrentInformation.Connections.RemoveAll(connection => connection.Name == CurrentInformation.ObjectName);
+                connectionsTreeView.Nodes.Remove(connectionsTreeView.SelectedNode);
+            }
+            else if ()
+            {
+
+            }
         }
     }
 }

@@ -9,11 +9,14 @@ using System.Windows.Forms;
 
 namespace SybaseManager
 {
-    public class TreeViewConnectionBootstrapper
+    public static class TreeViewConnectionBootstrapper
     {
         public static void Init(ConnectionInformation connectionInformation, TreeView treeView)
         {
-            var connectionNode = new TreeNode("Local connection");
+            var connectionNode = new TreeNode {
+                Tag = "Connection",
+                Text = connectionInformation.Name
+            };
 
             var tablesNode = new TreeNode("Tables");
             var triggersNode = new TreeNode("Triggers");

@@ -10,13 +10,13 @@ namespace SybaseManager
 {
     public static class CurrentInformation
     {
-        public static List<ConnectionInformation> Connections { get; private set; }
+        public static List<ConnectionInformation> Connections { get; } = new List<ConnectionInformation>();
         
         public static ConnectionInformation ConnectionProperties { get; set; }
         public static string ObjectType { get; set; }
         public static string ObjectName { get; set; }
 
-        public static string sqlGenObject()
+        public static string SqlGenObject()
         {
             return $@"SELECT c.text
             FROM sysusers u, syscomments c, sysobjects o
@@ -34,7 +34,8 @@ namespace SybaseManager
             {"Function", "SF"},
             {"View", "V"},
             {"Trigger", "TR"},
-            {"Constraint", "R"}
+            {"Constraint", "R"},
+            {"Connection", "C"}
         };
     }
 }

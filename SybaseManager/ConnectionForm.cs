@@ -22,7 +22,7 @@ namespace SybaseManager
                 DialogResult = DialogResult.OK;
                 Close();
             }
-            catch (Exception exception)
+            catch (Exception)
             {
                 setStatusError();
             }
@@ -51,7 +51,8 @@ namespace SybaseManager
 
             CurrentInformation.ConnectionProperties = new ConnectionInformation
             {
-                Connection = connection
+                Connection = connection,
+                Name = connectionNameTextBox.Text
             };
 
             statusLabel.Text = "Connection created successfully";
