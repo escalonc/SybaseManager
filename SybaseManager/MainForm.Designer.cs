@@ -95,7 +95,7 @@
             this.toolStripMenuItem1,
             this.deleteToolStripMenuItem});
             this.treeContextMenuStrip.Name = "contextMenuStrip1";
-            this.treeContextMenuStrip.Size = new System.Drawing.Size(109, 70);
+            this.treeContextMenuStrip.Size = new System.Drawing.Size(181, 92);
             // 
             // createToolStripMenuItem
             // 
@@ -106,7 +106,7 @@
             this.functionToolStripMenuItem,
             this.triggerToolStripMenuItem});
             this.createToolStripMenuItem.Name = "createToolStripMenuItem";
-            this.createToolStripMenuItem.Size = new System.Drawing.Size(108, 22);
+            this.createToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.createToolStripMenuItem.Text = "Create";
             // 
             // tableToolStripMenuItem
@@ -119,8 +119,9 @@
             // storedProcedureToolStripMenuItem
             // 
             this.storedProcedureToolStripMenuItem.Name = "storedProcedureToolStripMenuItem";
-            this.storedProcedureToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.storedProcedureToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.storedProcedureToolStripMenuItem.Text = "Stored procedure";
+            this.storedProcedureToolStripMenuItem.Click += new System.EventHandler(this.StoredProcedureToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
             // 

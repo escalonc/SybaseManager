@@ -31,10 +31,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.procedureParametersDataGrid = new System.Windows.Forms.DataGridView();
-            this.ParameterName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataType = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.procedureDefinitionTextBox = new System.Windows.Forms.TextBox();
+            this.ParameterName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mode = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.DataType = new System.Windows.Forms.DataGridViewComboBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.procedureParametersDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,24 +60,12 @@
             this.procedureParametersDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.procedureParametersDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ParameterName,
+            this.Mode,
             this.DataType});
             this.procedureParametersDataGrid.Location = new System.Drawing.Point(12, 77);
             this.procedureParametersDataGrid.Name = "procedureParametersDataGrid";
             this.procedureParametersDataGrid.Size = new System.Drawing.Size(436, 179);
             this.procedureParametersDataGrid.TabIndex = 9;
-            // 
-            // ParameterName
-            // 
-            this.ParameterName.HeaderText = "Name";
-            this.ParameterName.Name = "ParameterName";
-            // 
-            // DataType
-            // 
-            this.DataType.HeaderText = "Mode";
-            this.DataType.Items.AddRange(new object[] {
-            "IN",
-            "OUT"});
-            this.DataType.Name = "DataType";
             // 
             // button1
             // 
@@ -95,6 +84,30 @@
             this.procedureDefinitionTextBox.Name = "procedureDefinitionTextBox";
             this.procedureDefinitionTextBox.Size = new System.Drawing.Size(433, 132);
             this.procedureDefinitionTextBox.TabIndex = 11;
+            // 
+            // ParameterName
+            // 
+            this.ParameterName.HeaderText = "Name";
+            this.ParameterName.Name = "ParameterName";
+            // 
+            // Mode
+            // 
+            this.Mode.HeaderText = "Mode";
+            this.Mode.Items.AddRange(new object[] {
+            "IN",
+            "OUT"});
+            this.Mode.Name = "Mode";
+            // 
+            // DataType
+            // 
+            this.DataType.HeaderText = "Data type";
+            this.DataType.Items.AddRange(new object[] {
+            "varchar",
+            "decimal",
+            "int",
+            "bit",
+            "float"});
+            this.DataType.Name = "DataType";
             // 
             // CreateStoreProcedureForm
             // 
@@ -119,9 +132,10 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox nameTextBox;
         private System.Windows.Forms.DataGridView procedureParametersDataGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ParameterName;
-        private System.Windows.Forms.DataGridViewComboBoxColumn DataType;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox procedureDefinitionTextBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ParameterName;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Mode;
+        private System.Windows.Forms.DataGridViewComboBoxColumn DataType;
     }
 }

@@ -292,5 +292,11 @@ namespace SybaseManager
             createViewForm.Show();
 
         }
+
+        private void StoredProcedureToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var createProcedure = new CreateStoreProcedureForm(connectionsTreeView);
+            createProcedure.Show();
+        }
     }
 }
