@@ -61,6 +61,12 @@
     <Compile Include="ConnectionForm.Designer.cs">
       <DependentUpon>ConnectionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreateStoreProcedureForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateStoreProcedureForm.Designer.cs">
+      <DependentUpon>CreateStoreProcedureForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CreateTableForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +104,9 @@
     <Compile Include="TreeViewConnectionBootstrapper.cs" />
     <EmbeddedResource Include="ConnectionForm.resx">
       <DependentUpon>ConnectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreateStoreProcedureForm.resx">
+      <DependentUpon>CreateStoreProcedureForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CreateTableForm.resx">
       <DependentUpon>CreateTableForm.cs</DependentUpon>

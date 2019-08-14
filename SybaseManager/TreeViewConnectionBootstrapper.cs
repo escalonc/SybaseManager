@@ -13,7 +13,8 @@ namespace SybaseManager
     {
         public static void Init(ConnectionInformation connectionInformation, TreeView treeView)
         {
-            var connectionNode = new TreeNode {
+            var connectionNode = new TreeNode
+            {
                 Tag = "Connection",
                 Text = connectionInformation.Name
             };
@@ -54,7 +55,7 @@ namespace SybaseManager
                 if (constraints.Count != 0)
                 {
                     var constraintsNode = new TreeNode("Constraints");
-                    
+
                     foreach (var constraint in constraints)
                     {
                         constraintsNode.Nodes.Add(new TreeNode
@@ -63,13 +64,13 @@ namespace SybaseManager
                             Tag = "Constraint"
                         });
                     }
-                
+
                     node.Nodes.Add(constraintsNode);
                 }
-                
-                
+
+
                 tablesNode.Nodes.Add(node);
-                
+
             }
 
             foreach (var triggerName in triggerNames)
@@ -129,7 +130,19 @@ namespace SybaseManager
             connectionNode.Nodes.Add(functionsNode);
             connectionNode.Nodes.Add(usersNode);
 
-            treeView.Nodes[0].Nodes.Add(connectionNode);
+            var existingNode = treeView.Nodes[0].Nodes.Cast<TreeNode>().FirstOrDefault(node => node.Text.Equals(connectionInformation.Name));
+
+            if (existingNode != null)
+            {
+                var index = treeView.Nodes[0].Nodes.IndexOf(existingNode);
+
+                treeView.Nodes[0].Nodes.RemoveAt(index);
+                treeView.Nodes[0].Nodes.Insert(index, connectionNode);
+            }
+            else
+            {
+                treeView.Nodes[0].Nodes.Add(connectionNode);
+            }
         }
     }
 }

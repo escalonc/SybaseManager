@@ -31,11 +31,11 @@
             this.nameTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tableDefinitionDataGrid = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             this.FieldName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DataType = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.PrimaryKey = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.NotNull = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tableDefinitionDataGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,6 +68,16 @@
             this.tableDefinitionDataGrid.Size = new System.Drawing.Size(776, 297);
             this.tableDefinitionDataGrid.TabIndex = 2;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(15, 390);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(121, 47);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Save";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            // 
             // FieldName
             // 
             this.FieldName.HeaderText = "Name";
@@ -75,12 +85,14 @@
             // 
             // DataType
             // 
-            this.DataType.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.ComboBox;
             this.DataType.HeaderText = "Data Type";
             this.DataType.Items.AddRange(new object[] {
             "varchar",
             "int",
-            "decimal"});
+            "decimal",
+            "float",
+            "datetime",
+            "bit"});
             this.DataType.Name = "DataType";
             // 
             // PrimaryKey
@@ -92,16 +104,6 @@
             // 
             this.NotNull.HeaderText = "Not null";
             this.NotNull.Name = "NotNull";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(15, 390);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 47);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
             // CreateTableForm
             // 

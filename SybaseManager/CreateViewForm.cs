@@ -13,15 +13,17 @@ namespace SybaseManager
 {
     public partial class CreateViewForm : Form
     {
-        public CreateViewForm()
+        public CreateViewForm(TreeView treeView)
         {
+            TreeView = treeView;
             InitializeComponent();
         }
 
+        public TreeView TreeView { get; }
+
         private void Button1_Click(object sender, EventArgs e)
         {
-            string baseSql = "create view as ";
-            baseSql += sqlTextBox.Text;
+            string baseSql = $"create view {nameTextBox.Text} as {sqlTextBox.Text}";
 
 
             var ddlViewer = new DdlViewer(baseSql);
@@ -29,6 +31,7 @@ namespace SybaseManager
 
             if (ddlViewer.DialogResult != DialogResult.OK) return;
             CurrentInformation.ConnectionProperties.Connection.Execute(baseSql);
+            TreeViewConnectionBootstrapper.Init(CurrentInformation.ConnectionProperties, TreeView);
         }
     }
 }

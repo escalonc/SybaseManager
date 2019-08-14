@@ -112,32 +112,33 @@
             // tableToolStripMenuItem
             // 
             this.tableToolStripMenuItem.Name = "tableToolStripMenuItem";
-            this.tableToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tableToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.tableToolStripMenuItem.Text = "Table";
             this.tableToolStripMenuItem.Click += new System.EventHandler(this.TableToolStripMenuItem_Click);
             // 
             // storedProcedureToolStripMenuItem
             // 
             this.storedProcedureToolStripMenuItem.Name = "storedProcedureToolStripMenuItem";
-            this.storedProcedureToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.storedProcedureToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.storedProcedureToolStripMenuItem.Text = "Stored procedure";
             // 
             // viewToolStripMenuItem
             // 
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.viewToolStripMenuItem.Text = "View";
+            this.viewToolStripMenuItem.Click += new System.EventHandler(this.viewToolStripMenuItem_Click);
             // 
             // functionToolStripMenuItem
             // 
             this.functionToolStripMenuItem.Name = "functionToolStripMenuItem";
-            this.functionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.functionToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.functionToolStripMenuItem.Text = "Function";
             // 
             // triggerToolStripMenuItem
             // 
             this.triggerToolStripMenuItem.Name = "triggerToolStripMenuItem";
-            this.triggerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.triggerToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.triggerToolStripMenuItem.Text = "Trigger";
             // 
             // toolStripMenuItem1
@@ -157,8 +158,8 @@
             // tableLayoutPanel1
             // 
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 22.28968F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 77.71032F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.97166F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.02834F));
             this.tableLayoutPanel1.Controls.Add(this.connectionsTreeView, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tabControl1, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -174,7 +175,7 @@
             this.connectionsTreeView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.connectionsTreeView.Location = new System.Drawing.Point(3, 3);
             this.connectionsTreeView.Name = "connectionsTreeView";
-            this.connectionsTreeView.Size = new System.Drawing.Size(214, 644);
+            this.connectionsTreeView.Size = new System.Drawing.Size(300, 644);
             this.connectionsTreeView.TabIndex = 0;
             this.connectionsTreeView.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.ConnectionsTreeView_NodeMouseDoubleClick);
             this.connectionsTreeView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ConnectionsTreeView_MouseDown);
@@ -183,10 +184,10 @@
             // 
             this.tabControl1.Controls.Add(this.Main);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(223, 3);
+            this.tabControl1.Location = new System.Drawing.Point(309, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(762, 644);
+            this.tabControl1.Size = new System.Drawing.Size(676, 644);
             this.tabControl1.TabIndex = 1;
             // 
             // Main
@@ -195,7 +196,7 @@
             this.Main.Location = new System.Drawing.Point(4, 22);
             this.Main.Name = "Main";
             this.Main.Padding = new System.Windows.Forms.Padding(3);
-            this.Main.Size = new System.Drawing.Size(754, 618);
+            this.Main.Size = new System.Drawing.Size(668, 618);
             this.Main.TabIndex = 0;
             this.Main.Text = "Data";
             this.Main.UseVisualStyleBackColor = true;
@@ -206,7 +207,7 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 3);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(748, 612);
+            this.dataGridView1.Size = new System.Drawing.Size(662, 612);
             this.dataGridView1.TabIndex = 0;
             // 
             // MainForm

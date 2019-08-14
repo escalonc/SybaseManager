@@ -60,7 +60,7 @@ namespace SybaseManager
             var node = connectionsTreeView.GetNodeAt(e.X, e.Y);
             connectionsTreeView.SelectedNode = node;
 
-            if (node == null || node.Tag == null) return;
+            if (node?.Tag == null) return;
 
             CurrentInformation.ObjectType = node.Tag.ToString();
             CurrentInformation.ObjectName = node.Text;
@@ -282,8 +282,15 @@ namespace SybaseManager
 
         private void TableToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var createTableForm = new CreateTableForm();
+            var createTableForm = new CreateTableForm(connectionsTreeView);
             createTableForm.Show();
+        }
+
+        private void viewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var createViewForm = new CreateViewForm(connectionsTreeView);
+            createViewForm.Show();
+
         }
     }
 }

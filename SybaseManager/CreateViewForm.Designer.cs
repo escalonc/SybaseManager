@@ -36,6 +36,7 @@
             // 
             // sqlTextBox
             // 
+            this.sqlTextBox.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.sqlTextBox.Location = new System.Drawing.Point(12, 75);
             this.sqlTextBox.Multiline = true;
             this.sqlTextBox.Name = "sqlTextBox";
