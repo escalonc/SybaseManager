@@ -71,9 +71,11 @@
             // ddlTextBox
             // 
             this.ddlTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ddlTextBox.Font = new System.Drawing.Font("Consolas", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ddlTextBox.Location = new System.Drawing.Point(3, 3);
             this.ddlTextBox.Multiline = true;
             this.ddlTextBox.Name = "ddlTextBox";
+            this.ddlTextBox.ReadOnly = true;
             this.ddlTextBox.Size = new System.Drawing.Size(668, 474);
             this.ddlTextBox.TabIndex = 0;
             // 

@@ -22,9 +22,13 @@ namespace SybaseManager
                 DialogResult = DialogResult.OK;
                 Close();
             }
+            catch (SybaseManagerException ex)
+            {
+                SetStatusError(ex.Message);
+            }
             catch (Exception)
             {
-                setStatusError();
+                SetStatusError();
             }
         }
 
@@ -59,9 +63,10 @@ namespace SybaseManager
             statusLabel.ForeColor = Color.Green;
         }
 
-        private void setStatusError()
+        private void SetStatusError(string message = "Error when trying to establish the connection")
         {
-            statusLabel.Text = "Error when trying to establish the connection";
+            
+            statusLabel.Text = message;
             statusLabel.ForeColor = Color.Red;
         }
 
@@ -72,9 +77,13 @@ namespace SybaseManager
                 InitializeConnection();
                 
             }
+            catch (SybaseManagerException ex)
+            {
+                SetStatusError(ex.Message);
+            }
             catch (Exception)
             {
-                setStatusError();
+                SetStatusError();
             }
         }
     }

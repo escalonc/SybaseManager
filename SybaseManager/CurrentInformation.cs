@@ -25,6 +25,11 @@ namespace SybaseManager
         
         public static void AddConnection(ConnectionInformation connectionInformation)
         {
+            if (Connections.Any(connection => connection.Name.Equals(connectionInformation.Name)))
+            {
+                throw new SybaseManagerException("Connection name already exists");
+            }
+
             Connections.Add(connectionInformation);
         }
 

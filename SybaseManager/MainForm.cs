@@ -225,7 +225,7 @@ namespace SybaseManager
             {
                 return;
             }
-            
+
             TreeViewConnectionBootstrapper.Init(CurrentInformation.ConnectionProperties, connectionsTreeView);
 
             connectionsTreeView.Nodes[0].Expand();
@@ -233,15 +233,57 @@ namespace SybaseManager
 
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            string sql = "";
+
             if (CurrentInformation.ObjectType.Equals("Connection"))
             {
                 CurrentInformation.Connections.RemoveAll(connection => connection.Name == CurrentInformation.ObjectName);
-                connectionsTreeView.Nodes.Remove(connectionsTreeView.SelectedNode);
+                return;
             }
-            else if ()
+
+            if (CurrentInformation.ObjectType.Equals("Table"))
             {
+                sql = $"drop table {CurrentInformation.ObjectName}";
 
             }
+            else if (CurrentInformation.ObjectType.Equals("Trigger"))
+            {
+                sql = $"drop trigger {CurrentInformation.ObjectName}";
+            }
+            else if (CurrentInformation.ObjectType.Equals("Function"))
+            {
+                sql = $"drop function {CurrentInformation.ObjectName}";
+            }
+            else if (CurrentInformation.ObjectType.Equals("StoredProcedure"))
+            {
+                sql = $"drop proc {CurrentInformation.ObjectName}";
+            }
+            else if (CurrentInformation.ObjectType.Equals("View"))
+            {
+                sql = $"drop view {CurrentInformation.ObjectName}";
+            }
+           
+            var ddlViewer = new DdlViewer(sql);
+            ddlViewer.ShowDialog();
+
+            if (ddlViewer.DialogResult == DialogResult.OK)
+            {
+                CurrentInformation.ConnectionProperties.Connection.Execute(sql);
+                connectionsTreeView.Nodes.Remove(connectionsTreeView.SelectedNode);
+            }
+
+
+        }
+
+        private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void TableToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var createTableForm = new CreateTableForm();
+            createTableForm.Show();
         }
     }
 }
